@@ -82,16 +82,16 @@ export default function Tracks() {
   if (!booted) return null;
 
   return (
-    <section id="tracks" ref={sectionRef} className="relative py-24 md:py-32 px-4 md:px-8" style={{ background: "var(--color-bg-alt)" }}>
+    <section id="tracks" ref={sectionRef} className="relative py-24 md:py-32 px-4 md:px-8 bg-[#0a0e18]">
       <div className="max-w-5xl mx-auto">
-        <h2 ref={headingRef} className="text-4xl md:text-6xl font-bold mb-4 glow-text" style={{ fontFamily: "var(--font-body)", color: "#fff", opacity: 0 }}>TRACKS</h2>
-        <p ref={subRef} className="text-sm md:text-base mb-12" style={{ fontFamily: "var(--font-body)", color: "var(--color-text-muted)", opacity: 0 }}>Participants will compete in the following tracks:</p>
+        <h2 ref={headingRef} className="text-4xl md:text-6xl font-bold mb-4 glow-text font-['Space_Grotesk',sans-serif] text-[#ffffff]" style={{ opacity: 0 }}>TRACKS</h2>
+        <p ref={subRef} className="text-sm md:text-base mb-12 font-['Space_Grotesk',sans-serif] text-[#94a3b8]" style={{ opacity: 0 }}>Participants will compete in the following tracks:</p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {TRACKS.map((track, i) => (
             <div key={track.name} ref={el => (cardsRef.current[i] = el)} className="track-card rounded-xl p-8" style={{ opacity: 0 }}>
-              <h3 className="text-xl md:text-2xl mb-4" style={{ fontFamily: "var(--font-nav)", color: "var(--color-primary)" }}>{track.name}</h3>
-              <p className="text-sm leading-relaxed" style={{ fontFamily: "var(--font-body)", color: "var(--color-text-muted)" }}>{track.desc}</p>
+              <h3 className="text-xl md:text-2xl mb-4 font-mono text-[#38bdf8]">{track.name}</h3>
+              <p className="text-sm leading-relaxed font-['Space_Grotesk',sans-serif] text-[#94a3b8]">{track.desc}</p>
             </div>
           ))}
         </div>

@@ -93,8 +93,7 @@ export default function Hero() {
         {/* Subtext + CTAs */}
         <div ref={contentRef} className="mt-6">
           <p
-            className="text-sm md:text-lg max-w-xl mx-auto mb-8 leading-relaxed"
-            style={{ fontFamily: "var(--font-body)", color: "var(--color-text-muted)" }}
+            className="text-sm md:text-lg max-w-xl mx-auto mb-8 leading-relaxed font-['Space_Grotesk',sans-serif] text-[#94a3b8]"
           >
             24 Hours of Reckless Creation, Unreasonable Collaboration, and Beautiful Chaos
           </p>

@@ -79,27 +79,20 @@ export default function BootSequence() {
   return (
     <div
       ref={overlayRef}
-      className="boot-overlay fixed inset-0 z-[95] flex items-center justify-center"
+      className="boot-overlay fixed inset-0 z-[95] flex items-center justify-center font-mono"
     >
       <div ref={contentRef} className="boot-content text-center">
         {BOOT_LINES.slice(0, visibleLines).map((line, i) => (
           <div
             key={i}
-            className="boot-line text-base md:text-xl mb-2 tracking-wider"
-            style={{
-              color: line.includes("✓")
-                ? "var(--color-primary)"
-                : line === "SYSTEM READY."
-                ? "#22c55e"
-                : "rgba(255,255,255,0.7)",
-            }}
+            className={`boot-line text-base md:text-xl mb-2 tracking-wider ${line.includes("✓") ? "text-[#38bdf8]" : line === "SYSTEM READY." ? "text-[#22c55e]" : "text-[rgba(255,255,255,0.7)]"}`}
           >
             <span className="mr-3 opacity-40">&gt;</span>
             {line}
           </div>
         ))}
         {visibleLines > 0 && visibleLines < BOOT_LINES.length && !dissolving && (
-          <span className="boot-cursor inline-block w-3 h-5 ml-1" style={{ background: "rgba(255,255,255,0.7)", verticalAlign: "text-bottom" }} />
+          <span className="boot-cursor inline-block w-3 h-5 ml-1 align-bottom bg-[rgba(255,255,255,0.7)]" />
         )}
       </div>
     </div>

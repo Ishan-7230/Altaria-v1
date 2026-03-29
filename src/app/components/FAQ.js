@@ -72,13 +72,13 @@ export default function FAQ() {
   if (!booted) return null;
 
   return (
-    <section id="faq" ref={sectionRef} className="relative py-24 md:py-32 px-4 md:px-8" style={{ background: "var(--color-bg)" }}>
+    <section id="faq" ref={sectionRef} className="relative py-24 md:py-32 px-4 md:px-8 bg-[#06080d]">
       <div className="max-w-3xl mx-auto">
-        <h2 ref={headingRef} className="text-4xl md:text-6xl font-bold mb-16 glow-text" style={{ fontFamily: "var(--font-display)", color: "#fff", opacity: 0 }}>FAQ</h2>
+        <h2 ref={headingRef} className="text-4xl md:text-6xl font-bold mb-16 glow-text font-['NTVoyager',serif] text-[#ffffff]" style={{ opacity: 0 }}>FAQ</h2>
         <div className="flex flex-col">
           {FAQS.map((faq, i) => (
             <div key={i} ref={el => (itemsRef.current[i] = el)} className="faq-item" style={{ opacity: 0 }}>
-              <div className="faq-question py-4 px-4 rounded-sm" onClick={() => setOpenIndex(openIndex === i ? null : i)} role="button" tabIndex={0} aria-expanded={openIndex === i} id={`faq-q-${i}`}
+              <div className="faq-question py-4 px-4 rounded-sm font-['Space_Grotesk',sans-serif] text-[#e0f2fe]" onClick={() => setOpenIndex(openIndex === i ? null : i)} role="button" tabIndex={0} aria-expanded={openIndex === i} id={`faq-q-${i}`}
                 onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpenIndex(openIndex === i ? null : i); } }}>
                 <span className="flex items-center justify-between text-sm md:text-base">
                   {faq.q}
@@ -87,7 +87,7 @@ export default function FAQ() {
                   </svg>
                 </span>
               </div>
-              <div className={`faq-answer px-4 ${openIndex === i ? "open py-3" : "py-0"}`}>
+              <div className={`faq-answer px-4 ${openIndex === i ? "open py-3" : "py-0"} font-mono text-[#94a3b8]`}>
                 <p className="text-xs md:text-sm leading-relaxed">{faq.a}</p>
               </div>
             </div>

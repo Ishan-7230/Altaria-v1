@@ -79,11 +79,11 @@ export default function Sponsors() {
 
   let idx = 0;
   return (
-    <section id="sponsors" ref={sectionRef} className="relative py-24 md:py-32 px-4 md:px-8" style={{ background: "var(--color-bg-alt)" }}>
+    <section id="sponsors" ref={sectionRef} className="relative py-24 md:py-32 px-4 md:px-8 bg-[#0a0e18]">
       <div className="max-w-5xl mx-auto">
-        <h2 ref={headingRef} className="text-4xl md:text-6xl font-bold mb-16 text-center glow-text" style={{ fontFamily: "var(--font-body)", color: "#fff", opacity: 0 }}>SPONSORS</h2>
+        <h2 ref={headingRef} className="text-4xl md:text-6xl font-bold mb-16 text-center glow-text font-['CONEGA'] text-[#ffffff]" style={{ opacity: 0 }}>SPONSORS</h2>
         <div className="mb-12">
-          <h3 ref={titleLabelRef} className="text-base uppercase tracking-widest mb-8 text-center" style={{ fontFamily: "var(--font-nav)", color: "rgba(56,189,248,0.5)", opacity: 0 }}>Title Sponsors</h3>
+          <h3 ref={titleLabelRef} className="text-base uppercase tracking-widest mb-8 text-center font-mono text-[rgba(56,189,248,0.5)]" style={{ opacity: 0 }}>Title Sponsors</h3>
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
             {TITLE_SPONSORS.map(s => { const i = idx++; return (
               <div key={s.name} ref={el => (cardsRef.current[i] = el)} className="track-card rounded-xl p-8 flex items-center justify-center" style={{ minWidth: "260px", minHeight: "130px", opacity: 0 }}>
@@ -93,7 +93,7 @@ export default function Sponsors() {
           </div>
         </div>
         <div>
-          <h3 ref={goldLabelRef} className="text-base uppercase tracking-widest mb-8 text-center" style={{ fontFamily: "var(--font-nav)", color: "rgba(56,189,248,0.5)", opacity: 0 }}>Gold Sponsors</h3>
+          <h3 ref={goldLabelRef} className="text-base uppercase tracking-widest mb-8 text-center font-mono text-[rgba(56,189,248,0.5)]" style={{ opacity: 0 }}>Gold Sponsors</h3>
           <div className="flex items-center justify-center">
             {GOLD_SPONSORS.map(s => { const i = idx++; return (
               <div key={s.name} ref={el => (cardsRef.current[i] = el)} className="track-card rounded-xl p-8 flex items-center justify-center" style={{ minWidth: "220px", minHeight: "110px", opacity: 0 }}>

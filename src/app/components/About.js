@@ -67,30 +67,21 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative py-16 md:py-20 px-4 md:px-8 overflow-hidden"
-      style={{ background: "var(--color-bg)" }}
+      className="relative py-16 md:py-20 px-4 md:px-8 overflow-hidden bg-[#06080d]"
     >
       <div className="relative z-10 max-w-3xl mx-auto">
         <h2
           ref={headingRef}
-          className="text-3xl md:text-5xl font-bold mb-8 glow-text"
-          style={{
-            fontFamily: "var(--font-body)",
-            color: "var(--color-primary)",
-            opacity: 0,
-          }}
+          className="text-3xl md:text-5xl font-bold mb-8 glow-text font-['Space_Grotesk',sans-serif] text-[#38bdf8]"
+          style={{ opacity: 0 }}
         >
           What is ALTARIA?
         </h2>
 
         <p
           ref={descRef}
-          className="text-base md:text-lg leading-relaxed mb-10"
-          style={{
-            fontFamily: "var(--font-body)",
-            color: "var(--color-text-muted)",
-            opacity: 0,
-          }}
+          className="text-base md:text-lg leading-relaxed mb-10 font-['Space_Grotesk',sans-serif] text-[#94a3b8]"
+          style={{ opacity: 0 }}
         >
           ALTARIA is where ideas get dangerous. A 24-hour hackathon where
           developers, designers, and dreamers collide to build things that
@@ -111,14 +102,12 @@ export default function About() {
             >
               <div className="text-3xl mb-3">{item.icon}</div>
               <h3
-                className="text-lg font-bold mb-2"
-                style={{ fontFamily: "var(--font-mono)", color: "var(--color-primary)" }}
+                className="text-lg font-bold mb-2 font-mono text-[#38bdf8]"
               >
                 {item.title}
               </h3>
               <p
-                className="text-sm"
-                style={{ fontFamily: "var(--font-body)", color: "var(--color-text-muted)" }}
+                className="text-sm font-['Space_Grotesk',sans-serif] text-[#94a3b8]"
               >
                 {item.desc}
               </p>

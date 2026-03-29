@@ -1,36 +1,6 @@
 @import "tailwindcss";
 
-/* ===== DESIGN TOKENS ===== */
-:root {
-  --background: #06080d;
-  --foreground: #e8edf5;
-
-  /* Sky Blue Palette */
-  --color-bg: #06080d;
-  --color-bg-alt: #0a0e18;
-  --color-primary: #38bdf8;
-  --color-primary-light: #7dd3fc;
-  --color-primary-dark: #0284c7;
-  --color-glow: 0 0 20px rgba(56, 189, 248, 0.35), 0 0 50px rgba(56, 189, 248, 0.15);
-  --color-glow-strong: 0 0 10px rgba(56, 189, 248, 0.5), 0 0 30px rgba(56, 189, 248, 0.25), 0 0 60px rgba(56, 189, 248, 0.1);
-  --color-text: #e0f2fe;
-  --color-text-muted: #94a3b8;
-  --color-surface: rgba(56, 189, 248, 0.04);
-  --color-border: rgba(56, 189, 248, 0.12);
-
-  /* Fonts */
-  /* --font-display:"Nt_Voyager1" serif; */
-  /* --font-alt-display: "CONEGA", serif; */
-  /* --font-nav: monospace; */
-  /* --font-body: "Space Grotesk", "NTVoyager", sans-serif; */
-  /* --font-mono: "Courier New", "Consolas", monospace; */
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  /* --font-sans: var(--font-body); */
-}
+/* Variables and tokens are now managed directly in components using Tailwind utility classes */
 
 /* ===== @font-face ===== */
 @font-face {
@@ -75,9 +45,8 @@ html {
 }
 
 body {
-  background: var(--color-bg);
-  color: var(--foreground);
-  /* font-family: var(--font-body); */
+  background: #06080d;
+  color: #ffffff;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -92,12 +61,12 @@ body {
 
 /* ===== LOADING SCREEN (Phase 1) ===== */
 .loading-screen {
-  font-family: var(--font-mono);
+  font-family: monospace;
   background: #000;
 }
 
 .loading-bar {
-  background: var(--color-primary);
+  background: #38bdf8;
   height: 3px;
   transform-origin: left;
 }
@@ -158,24 +127,24 @@ body {
 }
 
 /* .enter-btn {
-  font-family: var(--font-nav);
-  border: 2px solid var(--color-primary);
+  font-family: monospace;
+  border: 2px solid #38bdf8;
   background: rgba(6, 8, 13, 0.95);
-  color: var(--color-primary);
+  color: #38bdf8;
   animation: pulse-glow 2.5s ease-in-out infinite;
   cursor: pointer;
   transition: background 0.3s, color 0.3s, transform 0.2s;
 } */
 
 /* .enter-btn:hover {
-  background: var(--color-primary);
+  background: #38bdf8;
   color: #000;
   transform: scale(1.05);
 } */
 
 /* ===== BOOT SEQUENCE (Phase 3) ===== */
 .boot-overlay {
-  font-family: var(--font-mono);
+  font-family: monospace;
   background: transparent;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
@@ -211,30 +180,28 @@ body {
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   backdrop-filter: blur(16px) saturate(180%);
   background: rgba(6, 8, 13, 0.7);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.12);
 }
 
 .nav-link {
-  /* font-family: var(--font-nav); */
-  color: var(--color-text-muted);
+  color: #94a3b8;
   transition: color 0.3s;
 }
 
 .nav-link:hover {
-  color: var(--color-primary);
+  color: #38bdf8;
 }
 
 .nav-cta {
-  /* font-family: var(--font-nav); */
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
   transition: background 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
 .nav-cta:hover {
-  background: var(--color-primary);
+  background: #38bdf8;
   color: #000;
-  box-shadow: var(--color-glow);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
 }
 
 .mobile-nav {
@@ -246,7 +213,7 @@ body {
 /* ===== HERO ===== */
 .hero-section {
   overflow: hidden;
-  background: var(--color-bg);
+  background: #06080d;
 }
 
 .hero-title {
@@ -256,7 +223,7 @@ body {
 }
 
 /* .hero-v1 {
-  font-family: var(--font-nav);
+  font-family: monospace;
 } */
 
 /* The zoom letter/word for scroll transition */
@@ -268,8 +235,8 @@ body {
 
 /* ===== TRACK CARDS ===== */
 .track-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: rgba(56, 189, 248, 0.04);
+  border: 1px solid rgba(56, 189, 248, 0.12);
   transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
   will-change: transform, opacity, filter;
 }
@@ -283,22 +250,18 @@ body {
 /* ===== TIMELINE ===== */
 .timeline-box {
   background: rgba(6, 8, 13, 0.9);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(56, 189, 248, 0.12);
   will-change: transform, opacity, filter;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .timeline-box:hover {
-  border-color: var(--color-primary);
+  border-color: #38bdf8;
   box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
 }
 
-/* .timeline-box .event-name {
-  font-family: var(--font-display);
-} */
-
 .timeline-box .event-date {
-  font-family: var(--font-mono);
+  font-family: monospace;
 }
 
 /* Timeline expanded schedule */
@@ -322,12 +285,11 @@ body {
 }
 
 .faq-question {
-  font-family: var(--font-body);
   position: relative;
   overflow: hidden;
   cursor: pointer;
   transition: color 0.3s;
-  color: var(--color-text);
+  color: #e0f2fe;
 }
 
 .faq-question::before {
@@ -335,7 +297,7 @@ body {
   position: absolute;
   inset: 0;
   width: 0;
-  background: var(--color-primary);
+  background: #38bdf8;
   z-index: 0;
   transition: width 0.4s ease;
 }
@@ -355,12 +317,12 @@ body {
 }
 
 .faq-answer {
-  font-family: var(--font-mono);
+  font-family: monospace;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
   transition: max-height 0.4s ease, opacity 0.3s ease;
-  color: var(--color-text-muted);
+  color: #94a3b8;
 }
 
 .faq-answer.open {
@@ -370,12 +332,12 @@ body {
 
 /* ===== VENUE ===== */
 .venue-transport {
-  font-family: var(--font-mono);
+  font-family: monospace;
 }
 
 /* ===== FOOTER ===== */
 .site-footer {
-  font-family: var(--font-mono);
+  font-family: monospace;
   background: #030306;
   color: rgba(56, 189, 248, 0.5);
 }
@@ -386,26 +348,24 @@ body {
 }
 
 .site-footer a:hover {
-  color: var(--color-primary);
+  color: #38bdf8;
 }
 
 /* ===== CTA BUTTONS ===== */
 .cta-primary {
-  /* font-family: var(--font-nav); */
-  background: var(--color-primary);
+  background: #38bdf8;
   color: #000;
   transition: box-shadow 0.3s, transform 0.2s;
 }
 
 .cta-primary:hover {
-  box-shadow: var(--color-glow-strong);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
   transform: translateY(-2px);
 }
 
 .cta-secondary {
-  /* font-family: var(--font-nav); */
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
   background: transparent;
   transition: background 0.3s;
 }
@@ -422,7 +382,7 @@ body {
 /* ===== SECTION WIPE ===== */
 .section-wipe {
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
   transform: scaleX(0);
   transform-origin: left;
   will-change: transform;
@@ -435,7 +395,7 @@ body {
 
 /* ===== CARDBOARD TEXTURE (hero background) ===== */
 .bg-texture {
-  background-color: var(--color-bg);
+  background-color: #06080d;
   background-image: url("https://www.transparenttextures.com/patterns/cardboard.png");
   background-blend-mode: overlay;
 }

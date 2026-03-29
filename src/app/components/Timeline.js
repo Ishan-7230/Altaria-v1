@@ -84,9 +84,9 @@ export default function Timeline() {
   if (!booted) return null;
 
   return (
-    <section id="schedule" ref={sectionRef} className="relative py-24 md:py-32 px-4 md:px-8" style={{ background: "var(--color-bg)" }}>
+    <section id="schedule" ref={sectionRef} className="relative py-24 md:py-32 px-4 md:px-8 bg-[#06080d]">
       <div className="max-w-4xl mx-auto">
-        <h2 ref={headingRef} className="text-4xl md:text-6xl font-bold mb-16 glow-text" style={{ fontFamily: "var(--font-body)", color: "#fff", opacity: 0 }}>
+        <h2 ref={headingRef} className="text-4xl md:text-6xl font-bold mb-16 glow-text font-['Space_Grotesk',sans-serif] text-[#ffffff]" style={{ opacity: 0 }}>
           HACKATHON SCHEDULE
         </h2>
 
@@ -97,7 +97,7 @@ export default function Timeline() {
             ref={lineRef}
             className="absolute left-6 md:left-8 top-0 bottom-0 w-[2px]"
             style={{
-              background: "linear-gradient(to bottom, transparent, var(--color-primary), var(--color-primary), transparent)",
+              background: "linear-gradient(to bottom, transparent, #38bdf8, #38bdf8, transparent)",
               transformOrigin: "top center",
               zIndex: 1,
             }}
@@ -114,21 +114,19 @@ export default function Timeline() {
               >
                 {/* Node dot on the line */}
                 <div
-                  className="absolute left-4 md:left-6 top-6 w-5 h-5 rounded-full border-2 z-10 flex items-center justify-center"
+                  className={`absolute left-4 md:left-6 top-6 w-5 h-5 rounded-full border-2 z-10 flex items-center justify-center border-[#38bdf8] ${expandedIndex === i ? 'bg-[#38bdf8]' : 'bg-[#06080d]'}`}
                   style={{
-                    borderColor: "var(--color-primary)",
-                    background: expandedIndex === i ? "var(--color-primary)" : "var(--color-bg)",
                     transition: "background 0.3s ease",
                     boxShadow: "0 0 12px rgba(56,189,248,0.4)",
                   }}
                 >
-                  <div className="w-2 h-2 rounded-full" style={{ background: "var(--color-primary)" }} />
+                  <div className="w-2 h-2 rounded-full bg-[#38bdf8]" />
                 </div>
 
                 {/* Arrow pointing from line to card */}
                 <div
-                  className="absolute left-[38px] md:left-[46px] top-[26px] w-6 md:w-8 h-[2px]"
-                  style={{ background: "var(--color-primary)", opacity: 0.5 }}
+                  className="absolute left-[38px] md:left-[46px] top-[26px] w-6 md:w-8 h-[2px] bg-[#38bdf8]"
+                  style={{ opacity: 0.5 }}
                 />
                 {/* Arrow head */}
                 <div
@@ -137,7 +135,7 @@ export default function Timeline() {
                     width: 0, height: 0,
                     borderTop: "5px solid transparent",
                     borderBottom: "5px solid transparent",
-                    borderLeft: "6px solid var(--color-primary)",
+                    borderLeft: "6px solid #38bdf8",
                     opacity: 0.5,
                   }}
                 />
@@ -155,14 +153,10 @@ export default function Timeline() {
                       <span className="event-name text-lg md:text-2xl text-white">{event.name}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="event-date text-xs md:text-sm" style={{ color: "var(--color-primary)" }}>{event.date}</span>
+                      <span className="event-date text-xs md:text-sm text-[#38bdf8] font-mono">{event.date}</span>
                       {event.schedule && (
                         <svg
-                          className="w-4 h-4 transition-transform duration-300"
-                          style={{
-                            transform: expandedIndex === i ? "rotate(180deg)" : "rotate(0deg)",
-                            color: "var(--color-primary)",
-                          }}
+                          className={`w-4 h-4 transition-transform duration-300 text-[#38bdf8] ${expandedIndex === i ? 'rotate-180' : 'rotate-0'}`}
                           fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         >
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -179,10 +173,10 @@ export default function Timeline() {
                         marginTop: expandedIndex === i ? "12px" : "0",
                       }}
                     >
-                      <div className="border-t pt-3" style={{ borderColor: "var(--color-border)" }}>
+                      <div className="border-t pt-3 border-[rgba(56,189,248,0.12)]">
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                           {event.schedule.map(item => (
-                            <span key={item} className="text-xs py-1 px-2 rounded" style={{ fontFamily: "var(--font-mono)", color: "var(--color-text-muted)", background: "rgba(56,189,248,0.05)" }}>
+                            <span key={item} className="text-xs py-1 px-2 rounded font-mono text-[#94a3b8] bg-[rgba(56,189,248,0.05)]">
                               {item}
                             </span>
                           ))}
@@ -191,7 +185,7 @@ export default function Timeline() {
                     </div>
                   )}
                   {event.schedule && (
-                    <span className="text-xs mt-2 block md:hidden" style={{ fontFamily: "var(--font-mono)", color: "rgba(56,189,248,0.3)" }}>
+                    <span className="text-xs mt-2 block md:hidden font-mono text-[rgba(56,189,248,0.3)]">
                       tap to {expandedIndex === i ? "collapse" : "expand"}
                     </span>
                   )}
@@ -200,7 +194,7 @@ export default function Timeline() {
                 {/* Down arrow between items (except last) */}
                 {i < EVENTS.length - 1 && (
                   <div className="absolute left-[22px] md:left-[26px] -bottom-1 flex flex-col items-center" style={{ zIndex: 2 }}>
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ color: "var(--color-primary)" }}>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="text-[#38bdf8]">
                       <path d="M6 0L6 10M6 10L2 6M6 10L10 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
