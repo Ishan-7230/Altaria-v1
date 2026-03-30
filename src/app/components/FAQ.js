@@ -25,6 +25,17 @@ export default function FAQ() {
   const headingRef = useRef(null);
   const itemsRef = useRef([]);
 
+  // Recalculate scroll dimensions whenever an accordion expands or collapses
+  useEffect(() => {
+    if (openIndex !== null || openIndex === null) { // trigger on any change
+      // Wait for the CSS transition to complete (0.4s) before refreshing
+      const timeout = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 450);
+      return () => clearTimeout(timeout);
+    }
+  }, [openIndex]);
+
   useEffect(() => {
     if (!booted) return;
 
