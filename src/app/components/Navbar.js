@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useSite } from "./SiteContext";
+import { useLenis } from "lenis/react";
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
@@ -25,10 +26,20 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const lenis = useLenis();
+  
   function handleClick(e, href) {
     e.preventDefault();
     setMobileOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    if (lenis) {
+      const target = href === "#hero" ? 0 : href;
+      lenis.scrollTo(target, { 
+        duration: 1.5, 
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+      });
+    } else {
+      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    }
   }
 
   if (!booted) return null;

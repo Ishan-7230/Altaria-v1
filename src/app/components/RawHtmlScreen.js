@@ -10,9 +10,10 @@ export default function RawHtmlScreen() {
   const contentRef = useRef(null);
   const [visible, setVisible] = useState(false);
 
-  // Show during raw and booting phases
   useEffect(() => {
-    if (phase === "raw") setVisible(true);
+    if (phase === "raw" && !visible) {
+      requestAnimationFrame(() => setVisible(true));
+    }
     if (phase === "booted") {
       // Smooth blur removal + fade
       const el = containerRef.current;
@@ -25,10 +26,10 @@ export default function RawHtmlScreen() {
           onComplete: () => setVisible(false),
         });
       } else {
-        setVisible(false);
+        requestAnimationFrame(() => setVisible(false));
       }
     }
-  }, [phase]);
+  }, [phase, visible]);
 
   // When booting starts: SLOW, VISIBLE transition from white HTML → dark styled
   // The user wants to SEE this happening behind the very slightly blurred boot overlay

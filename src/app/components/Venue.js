@@ -74,7 +74,7 @@ export default function Venue() {
         <h2 ref={headingRef} className="text-4xl md:text-6xl font-bold mb-12 glow-text font-['Space_Grotesk',sans-serif] text-[#ffffff]" style={{ opacity: 0 }}>VENUE</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           <div ref={mapRef} className="rounded-xl overflow-hidden border border-[rgba(56,189,248,0.12)]" style={{ opacity: 0 }}>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.7454035509975!2d77.56469731482174!3d12.911289990891742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae156310100001%3A0x71be53da4480fca2!2sDayananda%20Sagar%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1711680000000!5m2!1sen!2sin" width="100%" height="350" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="DSCE location" className="rounded-xl" />
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.7454035509975!2d77.56469731482174!3d12.911289990891742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae156310100001%3A0x71be53da4480fca2!2sDayananda%20Sagar%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1711680000000!5m2!1sen!2sin" width="100%" height="350" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="DSCE location" className="rounded-xl" onLoad={() => ScrollTrigger.refresh()} />
           </div>
           <div ref={infoRef} className="flex flex-col justify-center" style={{ opacity: 0 }}>
             <h3 className="text-xl md:text-2xl mb-4 font-['Space_Grotesk',sans-serif] text-[#38bdf8]">Dayananda Sagar College of Engineering</h3>

@@ -39,15 +39,9 @@
 }
 
 /* ===== BASE ===== */
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
 body {
   background: #06080d;
   color: #ffffff;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -62,7 +56,6 @@ body {
 /* ===== LOADING SCREEN (Phase 1) ===== */
 .loading-screen {
   font-family: monospace;
-  background: #000;
 }
 
 .loading-bar {
@@ -397,4 +390,24 @@ body {
   background-color: #06080d;
   background-image: url("https://www.transparenttextures.com/patterns/cardboard.png");
   background-blend-mode: overlay;
+}
+
+/* ===== SLEEK LOADER ===== */
+.page-loader_text {
+  -webkit-text-stroke: 1px #ffffff;
+  color: transparent;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 15s linear infinite;
 }

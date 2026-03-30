@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <PhaseController>
       <Navbar />
-      <main>
+      <main className="overflow-x-clip">
         <Hero />
         <About />
         <Tracks />
