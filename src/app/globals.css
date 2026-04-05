@@ -344,6 +344,48 @@ body {
 }
 
 /* ===== CTA BUTTONS ===== */
+.devfolio-btn {
+  background: #3770FF;
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 12px 32px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  min-width: 240px;
+  box-shadow: 0 2px 8px rgba(55, 112, 255, 0.3);
+}
+
+.devfolio-btn:hover {
+  background: #2b5fd9;
+  box-shadow: 0 4px 16px rgba(55, 112, 255, 0.5);
+}
+
+.discord-btn {
+  background: transparent;
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 12px 32px;
+  border-radius: 8px;
+  border: 2px solid #5865F2;
+  cursor: pointer;
+  text-decoration: none;
+  min-width: 240px;
+}
+
+.discord-btn:hover {
+  background: #5865F2;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(88, 101, 242, 0.5);
+}
+
 .cta-primary {
   background: #38bdf8;
   color: #000;

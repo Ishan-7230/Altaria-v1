@@ -37,7 +37,12 @@ export default function RootLayout({ children }) {
         <link rel="preload" href="/fonts/Nt_Voyager1.otf" as="font" type="font/otf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/Nt_Voyager2.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
       </head>
-      <body className="min-h-screen flex flex-col">{children}</body>
+      <body className="min-h-screen flex flex-col">
+        {children}
+        {/* Official Devfolio SDK — required for the Apply with Devfolio button */}
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script defer async src="https://apply.devfolio.co/v2/sdk.js"></script>
+      </body>
     </html>
   );
 }
