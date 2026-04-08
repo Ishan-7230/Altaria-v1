@@ -13,7 +13,7 @@ const NAV_LINKS = [
   { label: "Venue", href: "#venue" },
 ];
 
-const DEVFOLIO_URL = "https://devfolio.co";
+const DEVFOLIO_URL = "https://altaria.devfolio.co/overview";
 
 export default function Navbar() {
   const { booted } = useSite();
@@ -27,14 +27,14 @@ export default function Navbar() {
   }, []);
 
   const lenis = useLenis();
-  
+
   function handleClick(e, href) {
     e.preventDefault();
     setMobileOpen(false);
     if (lenis) {
       const target = href === "#hero" ? 0 : href;
-      lenis.scrollTo(target, { 
-        duration: 1.5, 
+      lenis.scrollTo(target, {
+        duration: 1.5,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
       });
     } else {
@@ -60,9 +60,9 @@ export default function Navbar() {
           </div>
 
           <button className="md:hidden relative z-[60] w-10 h-10 flex flex-col items-center justify-center gap-1.5" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menu">
-            <span className={`block w-5 h-px bg-white transition-transform duration-300 ${mobileOpen ? "rotate-45 translate-y-[7px]" : ""}`}/>
-            <span className={`block w-5 h-px bg-white transition-opacity duration-300 ${mobileOpen ? "opacity-0" : ""}`}/>
-            <span className={`block w-5 h-px bg-white transition-transform duration-300 ${mobileOpen ? "-rotate-45 -translate-y-[7px]" : ""}`}/>
+            <span className={`block w-5 h-px bg-white transition-transform duration-300 ${mobileOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+            <span className={`block w-5 h-px bg-white transition-opacity duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
+            <span className={`block w-5 h-px bg-white transition-transform duration-300 ${mobileOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
           </button>
         </div>
       </nav>
