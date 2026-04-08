@@ -92,7 +92,7 @@ export default function Sponsors() {
             ); })}
           </div>
         </div>
-        <div>
+        <div className="mb-12">
           <h3 ref={goldLabelRef} className="text-base uppercase tracking-widest mb-8 text-center font-mono text-[rgba(56,189,248,0.5)]" style={{ opacity: 0 }}>Gold Sponsors</h3>
           <div className="flex items-center justify-center">
             {GOLD_SPONSORS.map(s => { const i = idx++; return (
@@ -100,6 +100,20 @@ export default function Sponsors() {
                 <Image src={s.logo} alt={s.name} width={s.w} height={s.h} loading="lazy" className="object-contain" style={{ maxHeight: "70px", width: "auto" }} />
               </div>
             ); })}
+          </div>
+        </div>
+        {/* Platform Partner — Devfolio (below Gold, smaller size, required for verification) */}
+        <div className="mt-8">
+          <h3 className="text-sm uppercase tracking-widest mb-6 text-center font-mono text-[rgba(56,189,248,0.4)]">Platform Partner</h3>
+          <div className="flex items-center justify-center">
+            <a href="https://devfolio.co" target="_blank" rel="noopener noreferrer" className="track-card rounded-lg p-5 flex items-center justify-center bg-white/95 hover:bg-white transition-colors" style={{ minWidth: "180px", minHeight: "80px" }}>
+              <img
+                src="/images/devfolio_logo.png"
+                alt="DEVFOLIO LOGO"
+                style={{ height: 32, width: "auto" }}
+                className="object-contain"
+              />
+            </a>
           </div>
         </div>
       </div>

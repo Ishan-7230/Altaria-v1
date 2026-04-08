@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const EVENTS = [
-  { name: "Registration Opens", date: "15th April 2026", icon: "📋" },
+  { name: "Registration Opens", date: "10th April 2026", icon: "📋" },
   { name: "Registration Closes", date: "20th April 2026", icon: "🔒" },
   { name: "Finalized List Released", date: "23rd April 2026", icon: "📢" },
   { name: "Hackathon Day 1", date: "30th April 2026", icon: "🚀", schedule: ["Registration 9:00 AM","Opening Ceremony 10:00 AM","Hacking Begins 11:00 AM","Lunch 2:30 PM","Mentoring Round 1 5:00 PM","Evening Snacks 6:00 PM","Initial Evaluation 7:00 PM","Dinner 9:00 PM","Midnight Activity 12:00 AM"] },

@@ -127,7 +127,7 @@ export default function RawHtmlScreen() {
 
         <h2>Hackathon Schedule</h2>
         <ul>
-          <li>Registration Opens — 15th April 2026</li>
+          <li>Registration Opens — 10th April 2026</li>
           <li>Registration Closes — 20th April 2026</li>
           <li>Finalized List Released — 23rd April 2026</li>
           <li>Hackathon Day 1 — 30th April 2026</li>
