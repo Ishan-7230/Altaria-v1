@@ -87,7 +87,7 @@ export default function Sponsors() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
             {TITLE_SPONSORS.map(s => { const i = idx++; return (
               <div key={s.name} ref={el => (cardsRef.current[i] = el)} className="track-card rounded-xl p-8 flex items-center justify-center" style={{ minWidth: "260px", minHeight: "130px", opacity: 0 }}>
-                <Image src={s.logo} alt={s.name} width={s.w} height={s.h} loading="lazy" className="object-contain" style={{ maxHeight: "90px", width: "auto" }} />
+                <Image src={s.logo} alt={s.name} width={s.w} height={s.h} loading="lazy" className="object-contain" style={{ maxHeight: "90px", width: "auto", height: "auto" }} />
               </div>
             ); })}
           </div>
@@ -97,7 +97,7 @@ export default function Sponsors() {
           <div className="flex items-center justify-center">
             {GOLD_SPONSORS.map(s => { const i = idx++; return (
               <div key={s.name} ref={el => (cardsRef.current[i] = el)} className="track-card rounded-xl p-8 flex items-center justify-center" style={{ minWidth: "220px", minHeight: "110px", opacity: 0 }}>
-                <Image src={s.logo} alt={s.name} width={s.w} height={s.h} loading="lazy" className="object-contain" style={{ maxHeight: "70px", width: "auto" }} />
+                <Image src={s.logo} alt={s.name} width={s.w} height={s.h} loading="lazy" className="object-contain" style={{ maxHeight: "70px", width: "auto", height: "auto" }} />
               </div>
             ); })}
           </div>
@@ -107,11 +107,13 @@ export default function Sponsors() {
           <h3 className="text-sm uppercase tracking-widest mb-6 text-center font-mono text-[rgba(56,189,248,0.4)]">Platform Partner</h3>
           <div className="flex items-center justify-center">
             <a href="https://devfolio.co" target="_blank" rel="noopener noreferrer" className="track-card rounded-lg p-5 flex items-center justify-center bg-white/95 hover:bg-white transition-colors" style={{ minWidth: "180px", minHeight: "80px" }}>
-              <img
+              <Image
                 src="/images/devfolio_logo.png"
                 alt="DEVFOLIO LOGO"
-                style={{ height: 32, width: "auto" }}
+                width={150}
+                height={32}
                 className="object-contain"
+                style={{ width: "auto", height: "auto" }}
               />
             </a>
           </div>

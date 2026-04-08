@@ -1,6 +1,7 @@
 "use client";
 
 import { useSite } from "./SiteContext";
+import Image from "next/image";
 
 export default function Footer() {
   const { booted } = useSite();
@@ -40,10 +41,12 @@ export default function Footer() {
           <span>© 2026 ALTARIA Hackathon. All rights reserved.</span>
           <a href="https://devfolio.co" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
             <span>Powered by</span>
-            <img
+            <Image
               src="/images/devfolio_logo.png"
               alt="DEVFOLIO LOGO"
-              style={{ height: 18 }}
+              width={100}
+              height={18}
+              style={{ padding: '2px 0', width: 'auto', height: 'auto' }}
             />
           </a>
           <span>Dayananda Sagar College of Engineering</span>

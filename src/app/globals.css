@@ -239,35 +239,657 @@ body {
   transform: translateY(-4px);
 }
 
-/* ===== TIMELINE ===== */
-.timeline-box {
-  background: rgba(6, 8, 13, 0.9);
-  border: 1px solid rgba(56, 189, 248, 0.12);
+/* ===== CENTRAL PULSE TIMELINE ===== */
+
+/* ── Container ── */
+.timeline-central-container {
+  position: relative;
+  padding: 0 16px;
+}
+
+/* ── Central Line ── */
+.timeline-central-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(56, 189, 248, 0.06) 5%,
+    rgba(56, 189, 248, 0.18) 15%,
+    rgba(56, 189, 248, 0.18) 85%,
+    rgba(56, 189, 248, 0.06) 95%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+/* ── Line glow trail — illuminates behind the pulse ── */
+.timeline-line-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 0%;
+  background: linear-gradient(
+    to bottom,
+    rgba(56, 189, 248, 0.5) 0%,
+    rgba(56, 189, 248, 0.25) 60%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 12px rgba(56, 189, 248, 0.35),
+    0 0 30px rgba(56, 189, 248, 0.15);
+  z-index: 2;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* ── Pulse orb that travels down ── */
+.timeline-pulse {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  z-index: 5;
+  pointer-events: none;
+  --trail-dir: 1;
+}
+
+/* ── Ambient aura around the core ── */
+.pulse-aura {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(56, 189, 248, 0.25) 0%,
+    rgba(56, 189, 248, 0.08) 40%,
+    transparent 70%
+  );
+  animation: aura-breathe 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes aura-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.6); opacity: 1; }
+}
+
+/* ── Core ── */
+.timeline-pulse-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #38bdf8 50%, rgba(56, 189, 248, 0.6) 100%);
+  box-shadow:
+    0 0 8px #fff,
+    0 0 18px #38bdf8,
+    0 0 40px rgba(56, 189, 248, 0.7),
+    0 0 80px rgba(56, 189, 248, 0.3);
+  animation: pulse-core-breathe 1.4s ease-in-out infinite;
+  z-index: 3;
+}
+
+@keyframes pulse-core-breathe {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 8px #fff, 0 0 18px #38bdf8, 0 0 40px rgba(56, 189, 248, 0.7), 0 0 80px rgba(56, 189, 248, 0.3);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    box-shadow: 0 0 14px #fff, 0 0 30px #38bdf8, 0 0 60px rgba(56, 189, 248, 0.9), 0 0 120px rgba(56, 189, 248, 0.5);
+  }
+}
+
+/* ── Expanding rings ── */
+.timeline-pulse-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid rgba(56, 189, 248, 0.5);
+  animation: pulse-ring-expand 2.2s ease-out infinite;
+}
+
+.timeline-pulse-ring--outer {
+  animation-delay: 0.7s;
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.timeline-pulse-ring--third {
+  animation-delay: 1.4s;
+  border-color: rgba(56, 189, 248, 0.2);
+}
+
+@keyframes pulse-ring-expand {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(3.5); opacity: 0; }
+}
+
+/* ── Floating particles around the pulse ── */
+.pulse-particles {
+  position: absolute;
+  inset: -20px;
+  pointer-events: none;
+}
+
+.pulse-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8, 0 0 12px rgba(56, 189, 248, 0.5);
+  animation: particle-float 2.5s ease-in-out infinite;
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(calc(var(--trail-dir) * -35px)) scale(0.8);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(calc(var(--trail-dir) * -60px)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* ── Event Row Layout ── */
+.timeline-events {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.timeline-event-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  align-items: start;
+  min-height: 140px;
+  padding: 40px 0;
+}
+
+/* Left-side event: card in col 1 */
+.timeline-event-row.tl-left .timeline-card {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: end;
+  text-align: right;
+  margin-right: 8px;
+}
+
+.timeline-event-row.tl-left .timeline-node {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.timeline-event-row.tl-left .timeline-connector {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: start;
+}
+
+/* Right-side event: card in col 3 */
+.timeline-event-row.tl-right .timeline-card {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: start;
+  text-align: left;
+  margin-left: 8px;
+}
+
+.timeline-event-row.tl-right .timeline-node {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.timeline-event-row.tl-right .timeline-connector {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+}
+
+/* ── Node (on central line) ── */
+.timeline-node {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  z-index: 3;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 16px;
+}
+
+.timeline-node:hover {
+  transform: scale(1.15);
+}
+
+.node-done {
+  background: #38bdf8;
+  border: 3px solid #38bdf8;
+  box-shadow:
+    0 0 15px rgba(56, 189, 248, 0.5),
+    inset 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.node-current {
+  background: #06080d;
+  border: 3px solid #38bdf8;
+  box-shadow:
+    0 0 20px rgba(56, 189, 248, 0.7),
+    0 0 60px rgba(56, 189, 248, 0.3);
+  animation: node-glow 2s ease-in-out infinite;
+}
+
+.node-upcoming {
+  background: #06080d;
+  border: 3px solid rgba(56, 189, 248, 0.15);
+  box-shadow: none;
+}
+
+/* ── Neon Lit State (triggered by scroll) ── */
+.node-scroll-lit {
+  border-color: #38bdf8 !important;
+  box-shadow: 
+    0 0 15px #38bdf8,
+    0 0 35px rgba(56, 189, 248, 0.8),
+    0 0 70px rgba(56, 189, 248, 0.4),
+    inset 0 0 12px rgba(56, 189, 248, 0.6) !important;
+  transform: scale(1.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+@keyframes node-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.5), 0 0 60px rgba(56, 189, 248, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(56, 189, 248, 0.8), 0 0 100px rgba(56, 189, 248, 0.4);
+  }
+}
+
+/* Pulse node inner for "current" */
+.pulse-node-inner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #38bdf8;
+  animation: inner-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes inner-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.6; }
+}
+
+/* Upcoming node inner */
+.upcoming-node-inner {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.6);
+}
+
+/* ── Connector arm (horizontal line from node to card) ── */
+.timeline-connector {
+  position: absolute;
+  top: 36px;
+  width: 30px;
+  height: 2px;
+  z-index: 2;
+}
+
+.timeline-event-row.tl-left .timeline-connector {
+  right: 0;
+  left: auto;
+  margin-right: 30px;
+}
+
+.timeline-event-row.tl-right .timeline-connector {
+  left: 0;
+  right: auto;
+  margin-left: 30px;
+}
+
+.connector-done {
+  background: rgba(56, 189, 248, 0.4);
+}
+
+.connector-current {
+  background: #38bdf8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+}
+
+.connector-upcoming {
+  background: rgba(56, 189, 248, 0.1);
+}
+
+/* ── Card Styles ── */
+.timeline-card {
+  max-width: 420px;
+  border-radius: 12px;
+  padding: 20px 24px;
+  position: relative;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, opacity 0.5s ease;
   will-change: transform, opacity, filter;
-  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.timeline-box:hover {
-  border-color: #38bdf8;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
+.timeline-card:hover {
+  transform: translateY(-3px);
 }
 
-.timeline-box .event-date {
+/* Done card */
+.card-done {
+  background: rgba(56, 189, 248, 0.03);
+  border: 2px solid rgba(56, 189, 248, 0.12);
+}
+
+.card-done:hover {
+  border-color: rgba(56, 189, 248, 0.25);
+  box-shadow: 0 4px 30px rgba(56, 189, 248, 0.06);
+}
+
+/* Current card — the hero */
+.card-current {
+  background: rgba(56, 189, 248, 0.08);
+  border: 2px solid #38bdf8;
+  box-shadow:
+    0 0 30px rgba(56, 189, 248, 0.15),
+    0 0 80px rgba(56, 189, 248, 0.05);
+  animation: card-glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes card-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.15), 0 0 80px rgba(56, 189, 248, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(56, 189, 248, 0.3), 0 0 120px rgba(56, 189, 248, 0.1);
+  }
+}
+
+/* Upcoming card */
+.card-upcoming {
+  background: rgba(6, 8, 13, 0.8);
+  border: 2px solid rgba(56, 189, 248, 0.08);
+}
+
+.card-upcoming:hover {
+  border-color: rgba(56, 189, 248, 0.2);
+  box-shadow: 0 4px 30px rgba(56, 189, 248, 0.06);
+}
+
+/* ── Status Dot ── */
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.dot-live {
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+  animation: dot-flicker 1.5s ease-in-out infinite;
+}
+
+@keyframes dot-flicker {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* ── Badge ── */
+.timeline-badge {
+  display: block;
+  width: fit-content;
   font-family: monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
 }
 
-/* Timeline expanded schedule */
-.timeline-expanded {
-  max-height: 0;
+.badge-done {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.badge-current {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+  border: 1px solid #38bdf8;
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.badge-upcoming {
+  background: rgba(148, 163, 184, 0.08);
+  color: rgba(148, 163, 184, 0.5);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+/* ── Event Typography ── */
+.timeline-event-name {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+  position: relative;
+  display: inline-block;
+  transition: color 0.4s ease;
+}
+
+/* When GSAP adds .struck class, dim the text */
+.timeline-event-name.struck {
+  color: rgba(148, 163, 184, 0.4);
+}
+
+.timeline-event-date {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #38bdf8;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.03em;
+  transition: color 0.4s ease, opacity 0.4s ease;
+}
+
+.timeline-event-date.done-date {
+  color: rgba(56, 189, 248, 0.35);
+}
+
+.timeline-event-desc {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.85rem;
+  color: rgba(148, 163, 184, 0.7);
+  margin: 0;
+  line-height: 1.5;
+  transition: opacity 0.4s ease;
+}
+
+.timeline-event-desc.done-desc {
+  opacity: 0.4;
+}
+
+/* ── Animated Strike Sweep ── */
+.strike-sweep {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #38bdf8 15%,
+    #38bdf8 85%,
+    transparent 100%
+  );
+  transform: scaleX(0);
+  transform-origin: left center;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow:
+    0 0 8px rgba(56, 189, 248, 0.6),
+    0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+/* ── Expand indicator ── */
+.timeline-expand-indicator {
+  margin-top: 8px;
+  color: #38bdf8;
+}
+
+/* ── Schedule Panel ── */
+.timeline-schedule-panel {
   overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.4s ease, opacity 0.4s ease;
+  transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.3s ease;
 }
 
-.timeline-box.expanded .timeline-expanded,
-.timeline-box:hover .timeline-expanded {
-  max-height: 400px;
-  opacity: 1;
+.timeline-schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  border-top: 1px solid rgba(56, 189, 248, 0.12);
+  padding-top: 10px;
+}
+
+.timeline-schedule-item {
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: rgba(56, 189, 248, 0.04);
+  border: 1px solid rgba(56, 189, 248, 0.06);
+}
+
+/* ===== MOBILE RESPONSIVE TIMELINE ===== */
+@media (max-width: 768px) {
+  .timeline-event-row {
+    grid-template-columns: 1fr 40px 1fr;
+    gap: 0;
+    padding: 24px 0;
+    min-height: auto;
+  }
+
+  .timeline-central-line {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Restore alternating layout for mobile */
+  .timeline-event-row.tl-left .timeline-card {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: end;
+    text-align: right;
+    margin-right: 8px;
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  .timeline-event-row.tl-right .timeline-card {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: start;
+    text-align: left;
+    margin-left: 8px;
+    margin-right: 0;
+    max-width: 100%;
+  }
+
+  .timeline-event-row.tl-left .timeline-node,
+  .timeline-event-row.tl-right .timeline-node {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    width: 28px;
+    height: 28px;
+    margin-top: 20px;
+  }
+
+  .timeline-connector {
+    display: none;
+  }
+
+  .timeline-card {
+    padding: 12px 14px;
+  }
+
+  .timeline-event-name {
+    font-size: 0.9rem;
+  }
+
+  .timeline-event-date {
+    font-size: 0.7rem;
+    margin-bottom: 4px;
+  }
+
+  .timeline-event-desc {
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  .timeline-pulse {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 28px;
+  }
+
+  .timeline-line-glow {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+
+
+  .timeline-badge {
+    font-size: 0.55rem;
+    padding: 2px 8px;
+    margin-bottom: 8px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* ===== FAQ ===== */
