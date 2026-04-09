@@ -125,7 +125,7 @@ export default function Hero() {
           className="flex flex-col items-center justify-center whitespace-nowrap opacity-100"
           style={{ transformOrigin: "center center" }}
         >
-          <h1 className="hero-title zoom-letter text-[clamp(4rem,10vw,12rem)] leading-none mb-0 flex items-baseline justify-center whitespace-nowrap gap-4 font-[Londrina] text-9xl">
+          <h1 className="hero-title zoom-letter text-[clamp(4rem,14vw,12rem)] leading-none mb-0 flex items-baseline justify-center whitespace-nowrap gap-4 font-[Londrina] text-9xl">
             <span>ALTARIA V</span><span>1</span>
           </h1>
         </div>
@@ -133,7 +133,7 @@ export default function Hero() {
         {/* Subtext + CTAs */}
         <div ref={contentRef} className="mt-8">
           <p
-            className="text-sm md:text-xl max-w-xl mx-auto mb-10 leading-relaxed font-['Space_Grotesk',sans-serif] text-white/80 drop-shadow-lg"
+            className="text-sm md:text-lg max-w-xl mx-auto mb-10 leading-relaxed font-['Space_Grotesk',sans-serif] text-white/80 drop-shadow-lg"
           >
             24 Hours of Reckless Creation, Unreasonable Collaboration, and Beautiful Chaos
           </p>
