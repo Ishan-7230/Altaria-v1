@@ -8,28 +8,33 @@
   src: url("/fonts/Barviera.otf") format("opentype");
   font-display: swap;
 }
+
 @font-face {
   font-family: "CONEGA";
   src: url("/fonts/CONEGA.otf") format("opentype");
   font-display: swap;
 }
+
 @font-face {
   font-family: "Karteh";
   src: url("/fonts/Karteh.otf") format("opentype");
   font-display: swap;
 }
+
 @font-face {
   font-family: "NTVoyager";
   src: url("/fonts/Nt_Voyager1.otf") format("opentype");
   font-weight: 400;
   font-display: swap;
 }
+
 @font-face {
   font-family: "NTVoyager1";
   src: url("/fonts/Nt_Voyager2.ttf") format("truetype");
   font-weight: 700;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Londrina";
   src: url("/fonts/Londrina.ttf") format("truetype");
@@ -47,7 +52,10 @@ body {
 
 /* ===== ACCESSIBILITY ===== */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
@@ -82,9 +90,19 @@ body {
   margin: 0.5em 0;
 }
 
-.raw-html-overlay h1 { font-size: 2em; }
-.raw-html-overlay h2 { font-size: 1.5em; border-bottom: 1px solid #ccc; padding-bottom: 4px; }
-.raw-html-overlay h3 { font-size: 1.17em; }
+.raw-html-overlay h1 {
+  font-size: 2em;
+}
+
+.raw-html-overlay h2 {
+  font-size: 1.5em;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 4px;
+}
+
+.raw-html-overlay h3 {
+  font-size: 1.17em;
+}
 
 .raw-html-overlay p {
   margin: 0.5em 0;
@@ -111,9 +129,12 @@ body {
 
 /* ===== ENTER NOW BUTTON (Phase 2) ===== */
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.25), 0 0 40px rgba(56, 189, 248, 0.1);
   }
+
   50% {
     box-shadow: 0 0 25px rgba(56, 189, 248, 0.5), 0 0 60px rgba(56, 189, 248, 0.2);
   }
@@ -149,8 +170,17 @@ body {
 }
 
 @keyframes boot-line-enter {
-  0% { opacity: 0; transform: translateY(10px) scale(0.95); filter: blur(6px); }
-  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); }
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+    filter: blur(6px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
 }
 
 .boot-line {
@@ -160,8 +190,15 @@ body {
 }
 
 @keyframes blink-cursor {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 .boot-cursor {
@@ -225,6 +262,113 @@ body {
   transform-origin: center center;
 }
 
+/* ===== HUD CAPSULE NOTIFICATION ===== */
+
+/* The Capsule Tag (floating above title) */
+.hud-capsule-tag {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  background: #fff;
+  border: none;
+  border-radius: 9999px;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  z-index: 20;
+}
+
+@media (min-width: 768px) {
+  .hud-capsule-tag {
+    bottom: -36px;
+    padding: 6px 16px;
+  }
+}
+
+.hud-capsule-tag:hover {
+  /* Scaled down hover rings for smaller capsule */
+  box-shadow: inset 0 0 0 4px #000080,
+    inset 0 0 0 8px #000080,
+    inset 0 0 0 12px #000080,
+    inset 0 0 0 16px #000080;
+  background: #FFFFFF;
+
+  transform: translateX(-50%) translateY(-2px);
+}
+
+/* The Pulsing "Live" Dot */
+.live-pulse-small {
+  width: 5px;
+  height: 5px;
+  background-color: #87CEEB;
+  border-radius: 50%;
+  margin-right: 6px;
+  box-shadow: 0 0 6px #87CEEB;
+  animation: hud-pulse-ring-small 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  transition: all 0.4s;
+}
+
+@media (min-width: 768px) {
+  .live-pulse-small {
+    width: 6px;
+    height: 6px;
+    margin-right: 8px;
+  }
+}
+
+.hud-capsule-tag:hover .live-pulse-small {
+  background-color: #fff;
+  box-shadow: 0 0 8px #fff;
+  opacity: 0.8;
+}
+
+/* The Terminal Text */
+.hud-text-small {
+  font-family: 'Space Grotesk', sans-serif;
+  color: #000;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: all 0.4s;
+}
+
+.hud-capsule-tag:hover .hud-text-small {
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .hud-text-small {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+}
+
+/* The Pulse Animation */
+@keyframes hud-pulse-ring-small {
+  0% {
+    transform: scale(0.8);
+    box-shadow: 0 0 0 0 rgba(135, 206, 235, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(135, 206, 235, 0);
+  }
+
+  100% {
+    transform: scale(0.8);
+    box-shadow: 0 0 0 0 rgba(135, 206, 235, 0);
+  }
+}
+
 /* ===== TRACK CARDS ===== */
 .track-card {
   background: rgba(56, 189, 248, 0.04);
@@ -255,15 +399,13 @@ body {
   bottom: 0;
   width: 2px;
   transform: translateX(-50%);
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(56, 189, 248, 0.06) 5%,
-    rgba(56, 189, 248, 0.18) 15%,
-    rgba(56, 189, 248, 0.18) 85%,
-    rgba(56, 189, 248, 0.06) 95%,
-    transparent 100%
-  );
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(56, 189, 248, 0.06) 5%,
+      rgba(56, 189, 248, 0.18) 15%,
+      rgba(56, 189, 248, 0.18) 85%,
+      rgba(56, 189, 248, 0.06) 95%,
+      transparent 100%);
   z-index: 1;
 }
 
@@ -275,12 +417,10 @@ body {
   transform: translateX(-50%);
   width: 6px;
   height: 0%;
-  background: linear-gradient(
-    to bottom,
-    rgba(56, 189, 248, 0.5) 0%,
-    rgba(56, 189, 248, 0.25) 60%,
-    transparent 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(56, 189, 248, 0.5) 0%,
+      rgba(56, 189, 248, 0.25) 60%,
+      transparent 100%);
   box-shadow:
     0 0 12px rgba(56, 189, 248, 0.35),
     0 0 30px rgba(56, 189, 248, 0.15);
@@ -307,19 +447,26 @@ body {
   position: absolute;
   inset: -12px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(56, 189, 248, 0.25) 0%,
-    rgba(56, 189, 248, 0.08) 40%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(56, 189, 248, 0.25) 0%,
+      rgba(56, 189, 248, 0.08) 40%,
+      transparent 70%);
   animation: aura-breathe 2.5s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes aura-breathe {
-  0%, 100% { transform: scale(1); opacity: 0.7; }
-  50% { transform: scale(1.6); opacity: 1; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.6);
+    opacity: 1;
+  }
 }
 
 /* ── Core ── */
@@ -342,10 +489,13 @@ body {
 }
 
 @keyframes pulse-core-breathe {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(-50%, -50%) scale(1);
     box-shadow: 0 0 8px #fff, 0 0 18px #38bdf8, 0 0 40px rgba(56, 189, 248, 0.7), 0 0 80px rgba(56, 189, 248, 0.3);
   }
+
   50% {
     transform: translate(-50%, -50%) scale(1.3);
     box-shadow: 0 0 14px #fff, 0 0 30px #38bdf8, 0 0 60px rgba(56, 189, 248, 0.9), 0 0 120px rgba(56, 189, 248, 0.5);
@@ -376,8 +526,15 @@ body {
 }
 
 @keyframes pulse-ring-expand {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-  100% { transform: translate(-50%, -50%) scale(3.5); opacity: 0; }
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(3.5);
+    opacity: 0;
+  }
 }
 
 /* ── Floating particles around the pulse ── */
@@ -402,13 +559,16 @@ body {
     transform: translateY(0) scale(1);
     opacity: 0;
   }
+
   20% {
     opacity: 1;
   }
+
   50% {
     transform: translateY(calc(var(--trail-dir) * -35px)) scale(0.8);
     opacity: 0.7;
   }
+
   100% {
     transform: translateY(calc(var(--trail-dir) * -60px)) scale(0);
     opacity: 0;
@@ -517,7 +677,7 @@ body {
 /* ── Neon Lit State (triggered by scroll) ── */
 .node-scroll-lit {
   border-color: #38bdf8 !important;
-  box-shadow: 
+  box-shadow:
     0 0 15px #38bdf8,
     0 0 35px rgba(56, 189, 248, 0.8),
     0 0 70px rgba(56, 189, 248, 0.4),
@@ -527,9 +687,12 @@ body {
 }
 
 @keyframes node-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(56, 189, 248, 0.5), 0 0 60px rgba(56, 189, 248, 0.2);
   }
+
   50% {
     box-shadow: 0 0 35px rgba(56, 189, 248, 0.8), 0 0 100px rgba(56, 189, 248, 0.4);
   }
@@ -545,8 +708,17 @@ body {
 }
 
 @keyframes inner-pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.5); opacity: 0.6; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 0.6;
+  }
 }
 
 /* Upcoming node inner */
@@ -627,9 +799,12 @@ body {
 }
 
 @keyframes card-glow-pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 30px rgba(56, 189, 248, 0.15), 0 0 80px rgba(56, 189, 248, 0.05);
   }
+
   50% {
     box-shadow: 0 0 50px rgba(56, 189, 248, 0.3), 0 0 120px rgba(56, 189, 248, 0.1);
   }
@@ -663,8 +838,17 @@ body {
 }
 
 @keyframes dot-flicker {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.2); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
 }
 
 /* ── Badge ── */
@@ -695,8 +879,15 @@ body {
 }
 
 @keyframes badge-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
 }
 
 .badge-upcoming {
@@ -756,13 +947,11 @@ body {
   top: 50%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    #38bdf8 15%,
-    #38bdf8 85%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      #38bdf8 15%,
+      #38bdf8 85%,
+      transparent 100%);
   transform: scaleX(0);
   transform-origin: left center;
   z-index: 2;
@@ -920,12 +1109,13 @@ body {
   .faq-question:hover::before {
     width: 100%;
   }
+
   .faq-question:hover {
     color: #000;
   }
 }
 
-.faq-question > span {
+.faq-question>span {
   position: relative;
   z-index: 1;
 }
@@ -1067,6 +1257,7 @@ body {
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-100%);
   }

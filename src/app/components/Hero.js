@@ -122,16 +122,20 @@ export default function Hero() {
         {/* Zoom group: ALTARIA + V1 centered */}
         <div
           ref={zoomGroupRef}
-          className="flex flex-col items-center justify-center whitespace-nowrap opacity-100"
+          className="relative flex flex-col items-center justify-center whitespace-nowrap opacity-100"
           style={{ transformOrigin: "center center" }}
         >
+          <a href="#schedule" className="hud-capsule-tag">
+            <div className="live-pulse-small"></div>
+            <div className="hud-text-small">DEADLINE: 25 APR</div>
+          </a>
           <h1 className="hero-title zoom-letter text-[clamp(4rem,10vw,12rem)] leading-none mb-0 flex items-baseline justify-center whitespace-nowrap gap-4 font-[Londrina] text-9xl">
             <span>ALTARIA V</span><span>1</span>
           </h1>
         </div>
 
         {/* Subtext + CTAs */}
-        <div ref={contentRef} className="mt-8">
+        <div ref={contentRef} className="mt-14 relative z-10">
           <p
             className="text-sm md:text-xl max-w-xl mx-auto mb-10 leading-relaxed font-['Space_Grotesk',sans-serif] text-white/80 drop-shadow-lg"
           >
