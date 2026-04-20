@@ -81,7 +81,7 @@ export default function Sponsors() {
   return (
     <section id="sponsors" ref={sectionRef} className="relative py-24 md:py-32 px-4 md:px-8 bg-[#0a0e18]">
       <div className="max-w-5xl mx-auto">
-        <h2 ref={headingRef} className="text-4xl md:text-6xl font-bold mb-16 text-center glow-text font-['CONEGA'] text-[#ffffff]" style={{ opacity: 0 }}>SPONSORS</h2>
+        <h2 ref={headingRef} className="text-4xl md:text-6xl font-bold mb-16 text-center glow-text font-['Space Grotesk', sans-serif] text-[#ffffff]" style={{ opacity: 0 }}>SPONSORS</h2>
         <div className="mb-12">
           <h3 ref={titleLabelRef} className="text-base uppercase tracking-widest mb-8 text-center font-mono text-[rgba(56,189,248,0.5)]" style={{ opacity: 0 }}>Title Sponsors</h3>
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">

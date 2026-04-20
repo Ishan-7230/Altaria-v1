@@ -9,7 +9,7 @@ import CLOUDS from "vanta/dist/vanta.clouds.min";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const DISCORD_URL = "https://discord.gg/8BBgpktA";
+const DISCORD_URL = "https://discord.gg/nB5qgsg4g";
 
 export default function Hero() {
   const { booted } = useSite();
@@ -18,6 +18,7 @@ export default function Hero() {
   const zoomGroupRef = useRef(null);
   const contentRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState(null);
+  const fadeRef = useRef(null);
 
   // Initialize Vanta Clouds
   useEffect(() => {
@@ -86,6 +87,12 @@ export default function Hero() {
           ease: "power1.in",
         }, 0.7);
 
+        tl.to(fadeRef.current, {
+          opacity: 1,
+          duration: 0.8,
+          ease: "none",
+        }, 0.1);
+
       }, sectionRef);
 
       const onResize = () => {
@@ -129,7 +136,7 @@ export default function Hero() {
             <div className="live-pulse-small"></div>
             <div className="hud-text-small">DEADLINE: 25 APR</div>
           </a>
-          <h1 className="hero-title zoom-letter text-[clamp(4rem,10vw,12rem)] leading-none mb-0 flex items-baseline justify-center whitespace-nowrap gap-4 font-[Londrina] text-9xl">
+          <h1 className="hero-title zoom-letter text-[clamp(4rem,14vw,12rem)] leading-none mb-0 flex items-baseline justify-center whitespace-nowrap gap-4 font-[Londrina] text-9xl">
             <span>ALTARIA V</span><span>1</span>
           </h1>
         </div>
@@ -137,7 +144,7 @@ export default function Hero() {
         {/* Subtext + CTAs */}
         <div ref={contentRef} className="mt-14 relative z-10">
           <p
-            className="text-sm md:text-xl max-w-xl mx-auto mb-10 leading-relaxed font-['Space_Grotesk',sans-serif] text-white/80 drop-shadow-lg"
+            className="text-sm md:text-lg max-w-xl mx-auto mb-10 leading-relaxed font-['Space_Grotesk',sans-serif] text-white/80 drop-shadow-lg"
           >
             24 Hours of Reckless Creation, Unreasonable Collaboration, and Beautiful Chaos
           </p>
@@ -172,6 +179,22 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      <div
+          ref={fadeRef}
+          className="pointer-events-none absolute bottom-0 left-0 w-full h-[45vh] z-20"
+          style={{
+            background: `
+              linear-gradient(
+                to bottom,
+                rgba(7,11,16,0) 0%,
+                rgba(7,11,16,0.2) 30%,
+                rgba(7,11,16,0.6) 60%,
+                #070b10 100%
+              )
+            `,
+            opacity: 0,
+          }}
+        />
     </section>
   );
 }

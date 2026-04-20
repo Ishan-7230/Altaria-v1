@@ -78,7 +78,7 @@ export default function Venue() {
           </div>
           <div ref={infoRef} className="flex flex-col justify-center" style={{ opacity: 0 }}>
             <h3 className="text-xl md:text-2xl mb-4 font-['Space_Grotesk',sans-serif] text-[#38bdf8]">Dayananda Sagar College of Engineering</h3>
-            <p className="text-sm mb-6 leading-relaxed font-['Space_Grotesk',sans-serif] text-[#94a3b8]">Shavige Malleshwara Hills, Kumaraswamy Layout,<br/>Bengaluru, Karnataka 560078</p>
+            <p className="text-sm mb-6 leading-relaxed font-['Space_Grotesk',sans-serif] text-[#94a3b8]">Shavige Malleshwara Hills, Kumaraswamy Layout,<br/>Bengaluru, Karnataka 560078<br/>CD Sagar, Building No. 10</p>
             <a href="https://maps.google.com/?q=Dayananda+Sagar+College+of+Engineering+Bengaluru" target="_blank" rel="noopener noreferrer" className="cta-secondary inline-flex items-center gap-2 px-5 py-2 rounded text-xs uppercase tracking-wider w-fit mb-8">
               Open in Google Maps
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
