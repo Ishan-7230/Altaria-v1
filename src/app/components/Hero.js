@@ -132,10 +132,6 @@ export default function Hero() {
           className="relative flex flex-col items-center justify-center whitespace-nowrap opacity-100"
           style={{ transformOrigin: "center center" }}
         >
-          <a href="#schedule" className="hud-capsule-tag">
-            <div className="live-pulse-small"></div>
-            <div className="hud-text-small">DEADLINE: 25 APR</div>
-          </a>
           <h1 className="hero-title zoom-letter text-[clamp(4rem,14vw,12rem)] leading-none mb-0 flex items-baseline justify-center whitespace-nowrap gap-4 font-[Londrina] text-9xl">
             <span>ALTARIA V</span><span>1</span>
           </h1>
