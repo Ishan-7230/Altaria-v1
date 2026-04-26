@@ -17,14 +17,14 @@ const EVENTS = [
   },
   {
     name: "Registration Closes",
-    date: "2026-04-20",
-    displayDate: "20th April 2026",
+    date: "2026-04-25",
+    displayDate: "25th April 2026",
     description: "Last day to register your team. Don't miss out!",
   },
   {
     name: "Finalized List Released",
-    date: "2026-04-25",
-    displayDate: "25th April 2026",
+    date: "2026-04-26",
+    displayDate: "26th April 2026",
     description: "Selected teams will be announced. Check your email!",
   },
   {
