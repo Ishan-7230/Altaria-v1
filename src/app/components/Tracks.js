@@ -118,7 +118,7 @@ const TRACKS = [
     desc: "Build intelligent systems that bridge the physical and digital worlds. Sensor networks, edge computing, smart automation — powered by AI.",
   },
   {
-    name: "Cybersecurity + AI.",
+    name: "Cybersecurity + AI",
     glyph: "SEC",
     desc: "Defend the future. Create AI-driven tools for threat detection, vulnerability analysis, and security automation.",
   },
