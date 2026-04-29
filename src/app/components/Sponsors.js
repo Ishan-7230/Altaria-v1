@@ -13,16 +13,11 @@ const TITLE_SPONSORS = [
   { name: "Sagar Hospital", logo: "/images/sagar.png", w: 300, h: 120 },
 ];
 
-const GOLD_SPONSORS = [
-  { name: "Stellar Blockchain", logo: "/images/stellar.png", w: 260, h: 100 },
-];
-
 export default function Sponsors() {
   const { booted } = useSite();
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
   const titleLabelRef = useRef(null);
-  const goldLabelRef = useRef(null);
   const cardsRef = useRef([]);
 
   useEffect(() => {
@@ -40,7 +35,7 @@ export default function Sponsors() {
         );
 
         // Labels
-        [titleLabelRef.current, goldLabelRef.current].forEach(el => {
+        [titleLabelRef.current].forEach(el => {
           if (!el) return;
           gsap.fromTo(el,
             { opacity: 0, y: 20 },
@@ -92,16 +87,7 @@ export default function Sponsors() {
             ); })}
           </div>
         </div>
-        <div className="mb-12">
-          <h3 ref={goldLabelRef} className="text-base uppercase tracking-widest mb-8 text-center font-mono text-[rgba(56,189,248,0.5)]" style={{ opacity: 0 }}>Gold Sponsors</h3>
-          <div className="flex items-center justify-center">
-            {GOLD_SPONSORS.map(s => { const i = idx++; return (
-              <div key={s.name} ref={el => (cardsRef.current[i] = el)} className="track-card rounded-xl p-8 flex items-center justify-center" style={{ minWidth: "220px", minHeight: "110px", opacity: 0 }}>
-                <Image src={s.logo} alt={s.name} width={s.w} height={s.h} loading="lazy" className="object-contain" style={{ maxHeight: "70px", width: "auto", height: "auto" }} />
-              </div>
-            ); })}
-          </div>
-        </div>
+
         {/* Platform Partner — Devfolio (below Gold, smaller size, required for verification) */}
         <div className="mt-8">
           <h3 className="text-sm uppercase tracking-widest mb-6 text-center font-mono text-[rgba(56,189,248,0.4)]">Platform Partner</h3>
